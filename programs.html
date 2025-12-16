@@ -3,775 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO: Unique Title and Canonical -->
     <title>Programming Portfolio - Royce Gonsalves</title>
     <link rel="canonical" href="https://roycenoel.space/programs.html">
-
-    <!-- Description and Keywords -->
-    <meta name="description" content="Programming portfolio of Royce Gonsalves: Full-stack project showcases, algorithmic solutions, and innovative development with Java, Python, web, AI, and more.">
-    <meta name="keywords" content="Programming, Portfolio, Royce Gonsalves, Projects, Java, Python, Web Development, Full Stack, Android, AI, Algorithms, Software Development">
-    <meta name="author" content="Royce Gonsalves">
-
-    <!-- Favicon/Logo in same folder as HTML -->
     <link rel="icon" type="image/png" href="portfolioIcon.png">
-
-    <!-- OpenGraph for Social and Rich Snippets -->
-    <meta property="og:title" content="Programming Portfolio - Royce Gonsalves">
-    <meta property="og:description" content="Explore diverse programming projects, full-stack apps, and advanced solutions by Royce Gonsalves.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://roycenoel.space/programs.html">
-    <meta property="og:image" content="https://roycenoel.space/portfolioIcon.png">
-
-    <!-- Schema.org Structured Data for Rich Snippets -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "Person",
-      "name": "Royce Gonsalves",
-      "url": "https://roycenoel.space/",
-      "jobTitle": "Developer & Designer",
-      "sameAs": [
-        "https://github.com/roycenoel",
-        "https://www.linkedin.com/in/royce-gonsalves-478782212/",
-        "https://www.instagram.com/royce_gonsalves_/"
-      ],
-      "knowsAbout": ["Web Development", "Spreadlink", "Android Apps", "AI Tools", "Animation", "Graphics Design"]
-    }
-    </script>
-
-    <!-- Styles + Fonts -->
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Page specific styles for controls */
+        .projects-controls select, .projects-controls input {
+            background: var(--bg-card);
+            color: var(--text-white);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--radius-pill);
+        }
+        
+        .projects-controls select:focus, .projects-controls input:focus {
+            outline: none;
+            border-color: var(--text-white);
+        }
+
+        /* Modal specific for this page */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            color: var(--text-white);
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Navigation - Matching index.html style -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <span class="logo-text">Portfolio</span>
             </div>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="index.html#projects" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="programs.html" class="nav-link active">Programs</a></li>
+                <li class="nav-item"><a href="programs.html" class="nav-link active" style="color: var(--text-white);">Programs</a></li>
                 <li class="nav-item"><a href="index.html#skills" class="nav-link">Skills</a></li>
                 <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="btn-resume">Resume</button>
+            <div class="nav-cta">
+                <button class="btn-resume" onclick="window.open('https://drive.google.com/file/d/1pVW5ryvmPn5h9yOMW7DgkHSV0Aw_SXBy/view?usp=sharing', '_blank')">Resume</button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section - Matching index.html style -->
-    <section class="hero" style="padding-top: 80px;">
+    <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="hero-line">Programming</span>
-                    <span class="hero-line hero-name">Portfolio</span>
-                </h1>
-                <p class="hero-tagline">Showcasing diverse programming projects</p>
-                <p class="hero-description">Explore my collection of programming projects showcasing full-stack development, algorithm implementations, and innovative solutions across multiple technologies and frameworks.</p>
+                <span class="hero-tagline">Code & Algorithms</span>
+                <h1 class="hero-title">Programming<br>Portfolio</h1>
+                <p class="hero-description">Explore my collection of programming projects showcasing full-stack development, algorithm implementations, and innovative solutions.</p>
                 <div class="hero-buttons">
                     <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View Projects</button>
                     <a href="https://github.com/roycenoel" target="_blank" class="btn-secondary">GitHub Profile</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <!-- Add programming-related visual element here -->
-                <div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 4rem; color: var(--gray-300);">
-                    &lt;/&gt;
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Professional programming solutions and innovative software development</p>
+                <h2 class="section-title">GitHub Repositories</h2>
+                <p class="section-subtitle">Live data from my coding activity</p>
             </div>
 
-            <!-- Controls -->
-            <div class="projects-controls" style="display: flex; justify-content: center; align-items: center; gap: var(--space-4); margin-bottom: var(--space-16); flex-wrap: wrap;">
-                <div class="search-container" style="flex: 1; max-width: 300px;">
-                    <input type="text" id="project-search" class="form-input" placeholder="Search projects..." style="width: 100%; padding: var(--space-3) var(--space-4); border: 1px solid var(--gray-300); border-radius: var(--radius-pill); font-size: var(--font-size-base);">
-                </div>
-                <div class="filters-container" style="display: flex; gap: var(--space-3);">
-                    <select id="language-filter" class="form-input" style="padding: var(--space-3) var(--space-4); border: 1px solid var(--gray-300); border-radius: var(--radius-pill); font-size: var(--font-size-base); background: white;">
-                        <option value="">All Languages</option>
-                    </select>
-                    <select id="sort-select" class="form-input" style="padding: var(--space-3) var(--space-4); border: 1px solid var(--gray-300); border-radius: var(--radius-pill); font-size: var(--font-size-base); background: white;">
-                        <option value="stars">Sort by Stars</option>
-                        <option value="forks">Sort by Forks</option>
-                        <option value="updated">Sort by Updated</option>
-                        <option value="name">Sort by Name</option>
-                    </select>
-                </div>
+            <div class="projects-controls" style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 3rem; flex-wrap: wrap;">
+                <input type="text" id="project-search" placeholder="Search projects...">
+                <select id="language-filter"><option value="">All Languages</option></select>
+                <select id="sort-select">
+                    <option value="stars">Sort by Stars</option>
+                    <option value="updated">Sort by Updated</option>
+                    <option value="name">Sort by Name</option>
+                </select>
             </div>
 
-            <!-- Loading State -->
-            <div id="loading-state" class="loading-container" style="text-align: center; padding: var(--space-16);">
-                <div class="loading-spinner" style="width: 40px; height: 40px; border: 3px solid var(--gray-200); border-top: 3px solid var(--black); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto var(--space-4);"></div>
-                <p style="color: var(--gray-400); font-size: var(--font-size-lg);">Loading projects...</p>
-            </div>
-
-            <!-- Error State -->
-            <div id="error-state" class="error-container hidden" style="text-align: center; padding: var(--space-16);">
-                <div class="error-message">
-                    <h3 style="color: var(--gray-900); margin-bottom: var(--space-4);">Failed to Load Projects</h3>
-                    <p id="error-text" style="color: var(--gray-400); margin-bottom: var(--space-6);">Unable to fetch repositories from GitHub.</p>
-                    <button id="retry-button" class="btn-secondary">Try Again</button>
-                </div>
-            </div>
-
-            <!-- No Results State -->
-            <div id="no-results" class="no-results hidden" style="text-align: center; padding: var(--space-16);">
-                <h3 style="color: var(--gray-900); margin-bottom: var(--space-4);">No Projects Found</h3>
-                <p style="color: var(--gray-400);">Try adjusting your search or filter criteria.</p>
-            </div>
-
-            <!-- Projects Grid -->
-            <div id="projects-grid" class="projects-grid hidden">
-                <!-- Projects will be dynamically loaded here -->
-            </div>
+            <div id="loading-state" style="text-align: center; color: var(--text-gray);">Loading projects...</div>
+            <div id="projects-grid" class="projects-grid"></div>
         </div>
     </section>
 
-    <!-- Contact Section - Matching index.html style -->
-    <section class="contact" style="padding: var(--space-24) 0; background: var(--gray-50);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Interested in working together? Let's connect and discuss opportunities.</p>
-            </div>
-            <div class="contact-info" style="display: flex; justify-content: center; gap: var(--space-6); flex-wrap: wrap;">
-                <a href="https://github.com/roycenoel" class="btn-primary" target="_blank">GitHub Profile</a>
-                <a href="mailto:contact@example.com" class="btn-secondary">Send Email</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer - Matching index.html style -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Royce Gonsalves. All rights reserved.</p>
+            <p>&copy; 2025 Royce Gonsalves. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Project Modal - Properly Centered -->
-    <div id="project-modal" class="modal hidden" style="display: none;">
-        <div id="modal-overlay" class="modal-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 10000;">
-            <div class="modal-content" style="background: white; border-radius: var(--radius-lg); padding: var(--space-8); max-width: 600px; width: 90%; box-shadow: 0 20px 40px rgba(0,0,0,0.15); position: relative; max-height: 90vh; overflow-y: auto;">
-                
-                <div class="modal-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-6);">
-                    <h2 id="modal-title" class="modal-title" style="margin: 0; font-size: var(--font-size-2xl); font-weight: 600; color: var(--black);">Project Title</h2>
-                    <button id="modal-close" class="modal-close" type="button" style="background: none; border: none; font-size: 24px; cursor: pointer; color: var(--gray-400); padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background-color 0.2s;">&times;</button>
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+                <h2 id="modal-title" style="font-size: 1.5rem;">Title</h2>
+                <button onclick="document.getElementById('project-modal').style.display='none'" style="background:none; border:none; color:white; cursor:pointer; font-size: 1.5rem;">&times;</button>
+            </div>
+            <p id="modal-description" style="color: var(--text-gray); margin-bottom: 1.5rem;"></p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; text-align: center;">
+                    <small style="color: var(--text-gray);">Language</small><br>
+                    <strong id="modal-language">JS</strong>
                 </div>
-                
-                <div class="modal-body">
-                    <p id="modal-description" style="color: var(--gray-900); line-height: 1.6; margin-bottom: var(--space-6); font-size: var(--font-size-base);">Project description will appear here</p>
-                    
-                    <div class="modal-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6);">
-                        <div class="stat-item" style="background: var(--gray-50); padding: var(--space-3); border-radius: var(--radius-md); text-align: center;">
-                            <div style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: var(--space-1);">Language</div>
-                            <div id="modal-language" style="font-weight: 600; color: var(--black);">JavaScript</div>
-                        </div>
-                        <div class="stat-item" style="background: var(--gray-50); padding: var(--space-3); border-radius: var(--radius-md); text-align: center;">
-                            <div style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: var(--space-1);">Stars</div>
-                            <div id="modal-stars" style="font-weight: 600; color: var(--black);">0</div>
-                        </div>
-                        <div class="stat-item" style="background: var(--gray-50); padding: var(--space-3); border-radius: var(--radius-md); text-align: center;">
-                            <div style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: var(--space-1);">Forks</div>
-                            <div id="modal-forks" style="font-weight: 600; color: var(--black);">0</div>
-                        </div>
-                        <div class="stat-item" style="background: var(--gray-50); padding: var(--space-3); border-radius: var(--radius-md); text-align: center;">
-                            <div style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: var(--space-1);">Updated</div>
-                            <div id="modal-updated" style="font-weight: 600; color: var(--black);">2024-01-01</div>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-topics" style="margin-bottom: var(--space-6);">
-                        <div style="font-size: var(--font-size-sm); color: var(--gray-400); margin-bottom: var(--space-2);">Topics:</div>
-                        <div id="modal-topics-list" class="topics-list" style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
-                            <!-- Topics will be populated here -->
-                        </div>
-                    </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; text-align: center;">
+                    <small style="color: var(--text-gray);">Stars</small><br>
+                    <strong id="modal-stars">0</strong>
                 </div>
-                
-                <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: var(--space-3);">
-                    <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-decoration: none;">View on GitHub</a>
-                    <button id="modal-close-btn" class="btn-secondary" type="button">Close</button>
-                </div>
+            </div>
+            <div style="text-align: right;">
+                <a id="modal-github-link" href="#" target="_blank" class="btn-primary">View on GitHub</a>
             </div>
         </div>
     </div>
 
     <script>
-        // Configuration - Fixed to roycenoel only
-        const DEFAULT_USERNAME = 'roycenoel';
-        const API_CONFIG = {
-            baseUrl: 'https://api.github.com',
-            maxRepositories: 50,
-            excludeForks: true,
-            defaultSort: 'stars'
-        };
+        // GitHub API Logic
+        const USERNAME = 'roycenoel';
+        let allRepos = [];
 
-        // Application state
-        let allRepositories = [];
-        let filteredRepositories = [];
-        let isLoading = false;
-        let searchTimeout = null;
-
-        // DOM elements
-        let elements = {};
-
-        /**
-         * Initialize the application
-         */
-        function init() {
-            console.log('Initializing app...');
-            initializeElements();
-            setupEventListeners();
-            loadInitialProjects();
-        }
-
-        /**
-         * Initialize DOM elements
-         */
-        function initializeElements() {
-            elements = {
-                searchInput: document.getElementById('project-search'),
-                languageFilter: document.getElementById('language-filter'),
-                sortSelect: document.getElementById('sort-select'),
-                loadingState: document.getElementById('loading-state'),
-                errorState: document.getElementById('error-state'),
-                projectsGrid: document.getElementById('projects-grid'),
-                noResults: document.getElementById('no-results'),
-                errorText: document.getElementById('error-text'),
-                retryBtn: document.getElementById('retry-button'),
-                modal: document.getElementById('project-modal'),
-                modalOverlay: document.getElementById('modal-overlay'),
-                modalClose: document.getElementById('modal-close'),
-                modalCloseBtn: document.getElementById('modal-close-btn')
-            };
-
-            console.log('Elements initialized:', elements);
-        }
-
-        /**
-         * Set up all event listeners
-         */
-        function setupEventListeners() {
-            console.log('Setting up event listeners...');
-
-            // Controls
-            if (elements.searchInput) {
-                elements.searchInput.addEventListener('input', handleSearch);
-            }
-            if (elements.languageFilter) {
-                elements.languageFilter.addEventListener('change', applyFilters);
-            }
-            if (elements.sortSelect) {
-                elements.sortSelect.addEventListener('change', applySorting);
-            }
-
-            // Error handling
-            if (elements.retryBtn) {
-                elements.retryBtn.addEventListener('click', retryFetch);
-            }
-
-            // Modal close handlers
-            if (elements.modalClose) {
-                elements.modalClose.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    console.log('Modal close button clicked');
-                    closeModal();
-                });
-            }
-            
-            if (elements.modalCloseBtn) {
-                elements.modalCloseBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    console.log('Modal close button 2 clicked');
-                    closeModal();
-                });
-            }
-            
-            if (elements.modalOverlay) {
-                elements.modalOverlay.addEventListener('click', function(e) {
-                    if (e.target === elements.modalOverlay) {
-                        console.log('Modal overlay clicked');
-                        closeModal();
-                    }
-                });
-            }
-
-            // Prevent modal content clicks from closing modal
-            const modalContent = document.querySelector('.modal-content');
-            if (modalContent) {
-                modalContent.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
-            }
-
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && elements.modal && !elements.modal.classList.contains('hidden')) {
-                    console.log('Escape key pressed');
-                    closeModal();
-                }
-            });
-
-            console.log('Event listeners set up complete');
-        }
-
-        /**
-         * Load projects on initial page load
-         */
-        function loadInitialProjects() {
-            fetchRepositories(DEFAULT_USERNAME);
-        }
-
-        /**
-         * Retry fetching after an error
-         */
-        function retryFetch() {
-            fetchRepositories(DEFAULT_USERNAME);
-        }
-
-        /**
-         * Fetch repositories from GitHub API
-         */
-        async function fetchRepositories(username) {
-            if (isLoading) return;
-
+        async function init() {
             try {
-                isLoading = true;
-                showLoading();
-
-                const url = `${API_CONFIG.baseUrl}/users/${username}/repos?per_page=${API_CONFIG.maxRepositories}&sort=updated`;
-                const response = await fetch(url);
-
-                if (!response.ok) {
-                    if (response.status === 404) {
-                        throw new Error(`User "${username}" not found on GitHub`);
-                    } else if (response.status === 403) {
-                        throw new Error('GitHub API rate limit exceeded. Please try again later.');
-                    } else {
-                        throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
-                    }
-                }
-
-                const repositories = await response.json();
-                
-                // Filter out forks if configured
-                const filteredRepos = API_CONFIG.excludeForks 
-                    ? repositories.filter(repo => !repo.fork)
-                    : repositories;
-
-                allRepositories = filteredRepos;
-                filteredRepositories = [...allRepositories];
-                
-                updateLanguageFilter();
-                applySorting();
-                showProjects();
-                
-                showNotification(`Loaded ${filteredRepos.length} repositories successfully`, 'success');
-
-            } catch (error) {
-                console.error('Error fetching repositories:', error);
-                showError(error.message);
-            } finally {
-                isLoading = false;
+                const res = await fetch(`https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=100`);
+                allRepos = await res.json();
+                renderProjects(allRepos);
+                populateLanguages(allRepos);
+                document.getElementById('loading-state').style.display = 'none';
+            } catch (e) {
+                document.getElementById('loading-state').innerText = 'Failed to load projects.';
             }
         }
 
-        /**
-         * Show loading state
-         */
-        function showLoading() {
-            if (elements.loadingState) elements.loadingState.classList.remove('hidden');
-            if (elements.errorState) elements.errorState.classList.add('hidden');
-            if (elements.projectsGrid) elements.projectsGrid.classList.add('hidden');
-            if (elements.noResults) elements.noResults.classList.add('hidden');
-        }
-
-        /**
-         * Show error state
-         */
-        function showError(message) {
-            if (elements.errorText) elements.errorText.textContent = message;
-            if (elements.errorState) elements.errorState.classList.remove('hidden');
-            if (elements.loadingState) elements.loadingState.classList.add('hidden');
-            if (elements.projectsGrid) elements.projectsGrid.classList.add('hidden');
-            if (elements.noResults) elements.noResults.classList.add('hidden');
-        }
-
-        /**
-         * Show projects grid
-         */
-        function showProjects() {
-            if (elements.loadingState) elements.loadingState.classList.add('hidden');
-            if (elements.errorState) elements.errorState.classList.add('hidden');
-            
-            if (filteredRepositories.length === 0) {
-                if (elements.noResults) elements.noResults.classList.remove('hidden');
-                if (elements.projectsGrid) elements.projectsGrid.classList.add('hidden');
-            } else {
-                if (elements.noResults) elements.noResults.classList.add('hidden');
-                if (elements.projectsGrid) elements.projectsGrid.classList.remove('hidden');
-                renderProjects();
-            }
-        }
-
-        /**
-         * Render project cards
-         */
-        function renderProjects() {
-            const grid = elements.projectsGrid;
-            if (!grid) return;
-            
-            grid.innerHTML = '';
-
-            filteredRepositories.forEach(repo => {
-                const card = createProjectCard(repo);
-                grid.appendChild(card);
-            });
-        }
-
-        /**
-         * Create a project card element
-         */
-        function createProjectCard(repo) {
+        function createCard(repo) {
             const card = document.createElement('div');
-            card.className = 'project-card';
-            card.setAttribute('data-repo-id', repo.id);
-
-            const updatedDate = new Date(repo.updated_at).toLocaleDateString();
-            const language = repo.language || 'Unknown';
-            const description = repo.description || 'No description available';
-
+            // Matching the CSS class from style.css
+            card.className = 'project-card'; 
+            // Manual overrides to ensure dynamic content fits the theme
             card.style.cssText = `
-                background: white;
+                background: var(--bg-card); 
+                border: 1px solid var(--border-color); 
+                padding: 2rem; 
+                display: flex; 
+                flex-direction: column; 
                 border-radius: var(--radius-lg);
-                padding: var(--space-6);
-                box-shadow: 0 4px 20px var(--shadow-light);
-                transition: all var(--transition-normal);
                 cursor: pointer;
-                border: 1px solid var(--gray-200);
+                transition: transform 0.2s;
             `;
-
+            
             card.innerHTML = `
-                <div class="project-card-header" style="margin-bottom: var(--space-4);">
-                    <h3 class="project-title" style="margin: 0 0 var(--space-2) 0; font-size: var(--font-size-xl); font-weight: 600; color: var(--black);">${escapeHtml(repo.name)}</h3>
-                    <p class="project-description" style="margin: 0; color: var(--gray-900); line-height: 1.6;">${escapeHtml(description)}</p>
-                </div>
-                
-                <div class="project-stats" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-3);">
-                    <div style="display: flex; align-items: center; gap: var(--space-4);">
-                        <div style="display: flex; align-items: center; gap: var(--space-1); color: var(--gray-400); font-size: var(--font-size-sm);">
-                            <span>⭐</span>
-                            <span>${formatNumber(repo.stargazers_count)}</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: var(--space-1); color: var(--gray-400); font-size: var(--font-size-sm);">
-                            <span>🔗</span>
-                            <span>${formatNumber(repo.forks_count)}</span>
-                        </div>
-                    </div>
-                    ${language !== 'Unknown' ? `
-                        <div class="project-language" style="background: var(--gray-100); color: var(--gray-900); padding: var(--space-1) var(--space-3); border-radius: var(--radius-sm); font-size: var(--font-size-sm); font-weight: 500;">
-                            ${escapeHtml(language)}
-                        </div>
-                    ` : ''}
-                </div>
-                
-                <div class="project-footer" style="color: var(--gray-400); font-size: var(--font-size-sm);">
-                    <span>Updated ${updatedDate}</span>
+                <h3 style="color: var(--text-white); font-size: 1.25rem; margin-bottom: 0.5rem;">${repo.name}</h3>
+                <p style="color: var(--text-gray); font-size: 0.9rem; flex: 1; margin-bottom: 1.5rem;">${repo.description || 'No description available.'}</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-gray);">
+                    <span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;">${repo.language || 'Code'}</span>
+                    <span>★ ${repo.stargazers_count}</span>
                 </div>
             `;
-
-            // Add hover effects
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-4px)';
-                card.style.boxShadow = '0 10px 30px var(--shadow-medium)';
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-                card.style.boxShadow = '0 4px 20px var(--shadow-light)';
-            });
-
-            // Add click handler to open modal
-            card.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Project card clicked:', repo.name);
-                openModal(repo);
-            });
-
+            
+            card.addEventListener('click', () => openModal(repo));
             return card;
         }
 
-        /**
-         * Handle search input with debouncing
-         */
-        function handleSearch() {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                applyFilters();
-            }, 300);
+        function renderProjects(repos) {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = '';
+            repos.forEach(repo => grid.appendChild(createCard(repo)));
         }
 
-        /**
-         * Apply search and language filters
-         */
-        function applyFilters() {
-            const searchTerm = elements.searchInput ? elements.searchInput.value.toLowerCase().trim() : '';
-            const selectedLanguage = elements.languageFilter ? elements.languageFilter.value : '';
-
-            filteredRepositories = allRepositories.filter(repo => {
-                const matchesSearch = !searchTerm || 
-                    repo.name.toLowerCase().includes(searchTerm) ||
-                    (repo.description && repo.description.toLowerCase().includes(searchTerm));
-                
-                const matchesLanguage = !selectedLanguage || 
-                    repo.language === selectedLanguage;
-
-                return matchesSearch && matchesLanguage;
-            });
-
-            applySorting();
-            showProjects();
-        }
-
-        /**
-         * Apply sorting to filtered repositories
-         */
-        function applySorting() {
-            const sortBy = elements.sortSelect ? elements.sortSelect.value : 'stars';
-
-            filteredRepositories.sort((a, b) => {
-                switch (sortBy) {
-                    case 'stars':
-                        return b.stargazers_count - a.stargazers_count;
-                    case 'forks':
-                        return b.forks_count - a.forks_count;
-                    case 'updated':
-                        return new Date(b.updated_at) - new Date(a.updated_at);
-                    case 'name':
-                        return a.name.localeCompare(b.name);
-                    default:
-                        return 0;
-                }
-            });
-        }
-
-        /**
-         * Update language filter dropdown with available languages
-         */
-        function updateLanguageFilter() {
-            if (!elements.languageFilter) return;
-            
-            const languages = [...new Set(allRepositories
-                .map(repo => repo.language)
-                .filter(lang => lang)
-            )].sort();
-
-            // Clear existing options except "All Languages"
-            elements.languageFilter.innerHTML = '<option value="">All Languages</option>';
-
-            // Add language options
-            languages.forEach(language => {
-                const option = document.createElement('option');
-                option.value = language;
-                option.textContent = language;
-                elements.languageFilter.appendChild(option);
-            });
-        }
-
-        /**
-         * Open project modal with repository details
-         */
         function openModal(repo) {
-            console.log('Opening modal for:', repo.name);
-            if (!elements.modal) {
-                console.error('Modal element not found');
-                return;
-            }
-
-            // Populate modal content
-            const modalTitle = document.getElementById('modal-title');
-            const modalDescription = document.getElementById('modal-description');
-            const modalLanguage = document.getElementById('modal-language');
-            const modalStars = document.getElementById('modal-stars');
-            const modalForks = document.getElementById('modal-forks');
-            const modalUpdated = document.getElementById('modal-updated');
-            const modalGithubLink = document.getElementById('modal-github-link');
-            const modalTopicsList = document.getElementById('modal-topics-list');
-
-            if (modalTitle) modalTitle.textContent = repo.name;
-            if (modalDescription) modalDescription.textContent = repo.description || 'No description available';
-            if (modalLanguage) modalLanguage.textContent = repo.language || 'Not specified';
-            if (modalStars) modalStars.textContent = formatNumber(repo.stargazers_count);
-            if (modalForks) modalForks.textContent = formatNumber(repo.forks_count);
-            if (modalUpdated) modalUpdated.textContent = new Date(repo.updated_at).toLocaleDateString();
-            
-            // Update GitHub link - Fixed
-            if (modalGithubLink && repo.html_url) {
-                modalGithubLink.href = repo.html_url;
-                modalGithubLink.target = '_blank';
-                modalGithubLink.rel = 'noopener noreferrer';
-                
-                // Ensure click works properly
-                modalGithubLink.onclick = function(e) {
-                    e.stopPropagation();
-                    window.open(repo.html_url, '_blank', 'noopener,noreferrer');
-                };
-                
-                console.log('GitHub link set to:', repo.html_url);
-            }
-
-            // Populate topics
-            if (modalTopicsList) {
-                modalTopicsList.innerHTML = '';
-                
-                if (repo.topics && repo.topics.length > 0) {
-                    repo.topics.forEach(topic => {
-                        const tag = document.createElement('span');
-                        tag.className = 'topic-tag';
-                        tag.style.cssText = `
-                            background: var(--gray-100);
-                            color: var(--gray-900);
-                            padding: var(--space-1) var(--space-3);
-                            border-radius: var(--radius-sm);
-                            font-size: var(--font-size-sm);
-                            font-weight: 500;
-                        `;
-                        tag.textContent = topic;
-                        modalTopicsList.appendChild(tag);
-                    });
-                } else {
-                    const noTopics = document.createElement('span');
-                    noTopics.textContent = 'No topics specified';
-                    noTopics.style.cssText = `
-                        color: var(--gray-400);
-                        font-style: italic;
-                        font-size: var(--font-size-sm);
-                    `;
-                    modalTopicsList.appendChild(noTopics);
-                }
-            }
-
-            // Show modal
-            elements.modal.classList.remove('hidden');
-            elements.modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-
-            console.log('Modal opened successfully');
+            document.getElementById('modal-title').innerText = repo.name;
+            document.getElementById('modal-description').innerText = repo.description || 'No description.';
+            document.getElementById('modal-language').innerText = repo.language || 'N/A';
+            document.getElementById('modal-stars').innerText = repo.stargazers_count;
+            document.getElementById('modal-github-link').href = repo.html_url;
+            document.getElementById('project-modal').style.display = 'flex';
         }
 
-        /**
-         * Close project modal
-         */
-        function closeModal() {
-            console.log('Closing modal...');
-            if (elements.modal) {
-                elements.modal.classList.add('hidden');
-                elements.modal.style.display = 'none';
-                document.body.style.overflow = '';
-                console.log('Modal closed');
-            }
+        // Filter Logic
+        function filterProjects() {
+            const search = document.getElementById('project-search').value.toLowerCase();
+            const lang = document.getElementById('language-filter').value;
+            const sort = document.getElementById('sort-select').value;
+
+            let filtered = allRepos.filter(r => 
+                (r.name.toLowerCase().includes(search)) && 
+                (lang === '' || r.language === lang)
+            );
+
+            if(sort === 'stars') filtered.sort((a,b) => b.stargazers_count - a.stargazers_count);
+            if(sort === 'updated') filtered.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+            if(sort === 'name') filtered.sort((a,b) => a.name.localeCompare(b.name));
+
+            renderProjects(filtered);
         }
 
-        /**
-         * Utility function to format large numbers
-         */
-        function formatNumber(num) {
-            if (num >= 1000000) {
-                return (num / 1000000).toFixed(1) + 'M';
-            } else if (num >= 1000) {
-                return (num / 1000).toFixed(1) + 'K';
-            }
-            return num.toString();
-        }
-
-        /**
-         * Escape HTML to prevent XSS attacks
-         */
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        /**
-         * Show notification message
-         */
-        function showNotification(message, type = 'info') {
-            // Create notification element
-            const notification = document.createElement('div');
-            notification.className = `notification notification--${type}`;
-            notification.textContent = message;
-            
-            // Style the notification
-            Object.assign(notification.style, {
-                position: 'fixed',
-                top: '80px',
-                right: '20px',
-                padding: '12px 20px',
-                backgroundColor: type === 'error' ? 'var(--gray-900)' : 'var(--black)',
-                color: 'white',
-                borderRadius: 'var(--radius-md)',
-                zIndex: '9999',
-                transform: 'translateX(100%)',
-                transition: 'transform 0.3s ease',
-                maxWidth: '300px',
-                boxShadow: '0 10px 25px rgba(0, 0, 0, 0.15)'
+        function populateLanguages(repos) {
+            const langs = [...new Set(repos.map(r => r.language).filter(l => l))];
+            const select = document.getElementById('language-filter');
+            langs.forEach(l => {
+                const opt = document.createElement('option');
+                opt.value = l;
+                opt.innerText = l;
+                select.appendChild(opt);
             });
-
-            document.body.appendChild(notification);
-
-            // Animate in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 10);
-
-            // Remove after 4 seconds
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 4000);
         }
 
-        // Add loading spinner animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
-            .hidden { display: none !important; }
-        `;
-        document.head.appendChild(style);
+        document.getElementById('project-search').addEventListener('input', filterProjects);
+        document.getElementById('language-filter').addEventListener('change', filterProjects);
+        document.getElementById('sort-select').addEventListener('change', filterProjects);
 
-        // Initialize the application when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, starting init...');
-            init();
-        });
+        window.onclick = function(event) {
+            const modal = document.getElementById('project-modal');
+            if (event.target == modal) modal.style.display = "none";
+        }
+
+        init();
     </script>
 </body>
 </html>
