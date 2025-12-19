@@ -179,6 +179,21 @@ body {
   letter-spacing: 0.1em;
 }
 
+/* Typing Cursor Animation */
+.hero-tagline::after {
+  content: '|';
+  display: inline-block;
+  animation: blink 0.7s infinite;
+  color: var(--accent-color);
+  margin-left: 4px;
+  vertical-align: baseline;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 .hero-description {
   font-size: 1.1rem;
   color: var(--text-gray);

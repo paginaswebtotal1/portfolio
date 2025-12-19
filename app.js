@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initContactForm();
     initSpotlight();
     initAppleStyleEffects();
+    initHeroTyping();
 });
 
 // 1. DYNAMIC SPOTLIGHT FUNCTION (Safe for all pages)
@@ -262,4 +263,50 @@ function initAppleStyleEffects() {
     window.addEventListener('load', () => {
         document.body.style.opacity = '1';
     });
+}
+
+// 7. HERO TYPING EFFECT
+function initHeroTyping() {
+    const tagline = document.querySelector('.hero-tagline');
+    if (!tagline) return;
+
+    const roles = [
+        "Developer & Designer",
+        "AI explorer",
+        "Full Stack Developer",
+        "UI/UX Designer"
+        
+    ];
+
+    let roleIndex = 0;
+    let charIndex = roles[0].length;
+    let isDeleting = true;
+
+    function type() {
+        const currentRole = roles[roleIndex];
+
+        if (isDeleting) {
+            tagline.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            tagline.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentRole.length) {
+            typeSpeed = 3000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    // Start loop after initial 3s delay
+    setTimeout(type, 3000);
 }
