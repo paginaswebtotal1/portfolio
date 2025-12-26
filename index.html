@@ -40,6 +40,150 @@
     </script>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Enhanced Profile Section */
+        .profile-section {
+            text-align: center;
+            max-width: 700px;
+            margin: 2rem auto 4rem;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Tree Structure */
+        .founder-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .founder-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-white);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.6rem 1.2rem;
+            border-radius: 100px;
+            border: 1px solid var(--border-color);
+            z-index: 2;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .founder-tree:hover .founder-label {
+            border-color: var(--text-white);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .trunk {
+            width: 1px;
+            height: 30px;
+            background: var(--border-color);
+            position: relative;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .branches {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding-top: 20px;
+            flex: 1;
+        }
+
+        /* Horizontal Lines */
+        .branch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 1px;
+            background: var(--border-color);
+            width: 50%;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .branch:first-child::before { right: 0; }
+        .branch:last-child::before { left: 0; }
+
+        /* Vertical Lines to Buttons */
+        .branch::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 20px;
+            width: 1px;
+            background: var(--border-color);
+            left: 50%;
+            transform: translateX(-50%);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        /* Button Styling */
+        .project-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            min-width: 140px;
+            animation: fadeIn 0.5s ease-out backwards;
+        }
+
+        .branch:first-child .project-btn { animation-delay: 0.2s; }
+        .branch:last-child .project-btn { animation-delay: 0.3s; }
+
+        /* Hover Effects - Light up the path */
+        .project-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--text-white);
+            color: var(--text-white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Light up lines on hover */
+        .branch:hover::before,
+        .branch:hover::after {
+            background: var(--text-white);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .founder-tree:hover .trunk {
+             background: var(--text-white);
+             box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+    </style>
+    
 </head>
 
 <body>
@@ -72,8 +216,35 @@
                     Hello, I'm<br>
                     Royce Gonsalves
                 </h1>
-                <p class="hero-description">Crafting exceptional digital experiences through innovative design and
-                    cutting-edge development. Founder of Spreadlink.</p>
+                <div class="profile-section">
+                    <!-- Main Bio Text -->
+                    <p class="bio-text">
+                      Crafting exceptional digital experiences through innovative design and cutting-edge development.
+                    </p>
+                  
+                    <!-- Branch Design Section -->
+                    <div class="founder-tree">
+                      <span class="founder-label">Founder of</span>
+                      
+                      <div class="trunk"></div>
+                      
+                      <div class="branches">
+                        <!-- Left Branch: Spreadlink -->
+                        <div class="branch">
+                          <a href="./spreadlink.html" target="_blank" class="project-btn">
+                            Spreadlink
+                          </a>
+                        </div>
+                  
+                        <!-- Right Branch: Griddraft.pro -->
+                        <div class="branch">
+                          <a href="https://griddraft.pro/" target="_blank" class="project-btn">
+                            Griddraft.pro
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <div class="hero-buttons">
                     <button class="btn-primary" onclick="window.location.href='#projects'">View My Work</button>
                     <button class="btn-secondary" onclick="window.location.href='#contact'">Get In Touch</button>
