@@ -1,55 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Portfolio Website - Developer & Designer</title>
-
-    <meta name="description"
-        content="Explore the portfolio SEO - GEO - AEO.">
-    <meta name="keywords"
-        content="Portfolio SEO,">
-    <meta name="author" content="SEO - GEO -AEO">
-
-    <link rel="icon" type="image/png" href="portfolioIcon.png">
-
-    <meta property="og:title" content="Portfolio SEO">
-    <meta property="og:description" content="Showcase of web SEO Portfolio.">
+    <!-- Meta viewport optimizada para iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>SEO Manager · Portfolio</title>
+    <meta name="description" content="Portfolio de SEO Manager con más de 12 años de experiencia en SEO técnico, programático y content SEO.">
+    <meta name="keywords" content="SEO, GEO, AEO, Programmatic SEO, Technical SEO">
+    <meta name="author" content="SEO Manager">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/google-logo.png">
+    <!-- Open Graph -->
+    <meta property="og:title" content="SEO Manager Portfolio">
+    <meta property="og:description" content="Especialista en SEO con 12+ años de experiencia">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://">
-    <meta property="og:image" content="https://">
-
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.19/build/spline-viewer.js"></script>
-   
-    <link rel="stylesheet" href="style.css">
-
+    <meta property="og:url" content="https://tusitio.com">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200">
+    <!-- Spline (modelo 3D) -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.19/build/spline-viewer.js"></script>
+    <!-- Font Awesome (iconos gratuitos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Enhanced Profile Section */
-        .profile-section {
-            text-align: center;
-            max-width: 700px;
-            margin: 2rem auto 4rem;
+        /* ===== RESET Y VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #030712;
+            --bg-card: #111827;
+            --bg-card-hover: #1F2937;
+            --text-white: #F9FAFB;
+            --text-gray: #9CA3AF;
+            --border-color: #374151;
+            --accent: #10b981;
+            --accent-gradient: linear-gradient(135deg, #10b981, #3b82f6);
+            --font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        .nav-logo .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: color 0.3s;
             position: relative;
-            animation: fadeIn 1s ease-out;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text-white);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        /* Menú hamburguesa (oculto por defecto) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #9CA3AF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-section {
+            margin: 2rem 0;
         }
 
         .bio-text {
             font-size: 1.1rem;
             color: var(--text-gray);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
+            margin-bottom: 2rem;
             max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        /* Tree Structure */
         .founder-tree {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .founder-label {
@@ -58,73 +178,33 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-white);
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255,255,255,0.03);
             padding: 0.6rem 1.2rem;
             border-radius: 100px;
             border: 1px solid var(--border-color);
-            z-index: 2;
             backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-        }
-
-        .founder-tree:hover .founder-label {
-            border-color: var(--text-white);
-            background: rgba(255, 255, 255, 0.08);
         }
 
         .trunk {
             width: 1px;
             height: 30px;
             background: var(--border-color);
-            position: relative;
-            transition: background 0.3s, box-shadow 0.3s;
+            margin-left: 1.2rem;
         }
 
         .branches {
             display: flex;
-            justify-content: center;
-            width: 100%;
-            gap: 2rem;
-            position: relative;
+            gap: 1rem;
+            margin-left: 1.2rem;
+            flex-wrap: wrap;
         }
 
         .branch {
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            padding-top: 20px;
-            flex: 1;
         }
 
-        /* Horizontal Lines */
-        .branch::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            height: 1px;
-            background: var(--border-color);
-            width: 50%;
-            transition: background 0.3s, box-shadow 0.3s;
-        }
-
-        .branch:first-child::before { right: 0; }
-        .branch:last-child::before { left: 0; }
-
-        /* Vertical Lines to Buttons */
-        .branch::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            height: 20px;
-            width: 1px;
-            background: var(--border-color);
-            left: 50%;
-            transform: translateX(-50%);
-            transition: background 0.3s, box-shadow 0.3s;
-        }
-
-        /* Button Styling */
         .project-btn {
             display: flex;
             align-items: center;
@@ -138,107 +218,428 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             min-width: 140px;
-            animation: fadeIn 0.5s ease-out backwards;
         }
 
-        .branch:first-child .project-btn { animation-delay: 0.2s; }
-        .branch:last-child .project-btn { animation-delay: 0.3s; }
-
-        /* Hover Effects - Light up the path */
         .project-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255,255,255,0.08);
             border-color: var(--text-white);
             color: var(--text-white);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        /* Light up lines on hover */
-        .branch:hover::before,
-        .branch:hover::after {
-            background: var(--text-white);
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .founder-tree:hover .trunk {
-             background: var(--text-white);
-             box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px rgba(16,185,129,0.3);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--text-white);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(16,185,129,0.1);
+        }
+
+        .hero-visual {
+            height: 500px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        spline-viewer {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ===== PROYECTOS ===== */
+        .projects {
+            padding: 6rem 0;
+            background: linear-gradient(to bottom, var(--bg-dark), #0a0a0a);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #9CA3AF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .project-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-btn {
+            padding: 0.6rem 1.4rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-gray);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border-color: var(--accent);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 30px 40px rgba(0,0,0,0.5);
+        }
+
+        .project-image {
+            height: 200px;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image i {
+            font-size: 4rem;
+            color: var(--accent);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #d1d5db;
+        }
+
+        .project-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            color: var(--text-white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border-color: var(--accent);
+        }
+
+        /* ===== ABOUT (EXPERIENCIA) ===== */
+        .about {
+            padding: 6rem 0;
+            background: var(--bg-card);
+        }
+
+        .about .section-subtitle {
+            text-align: left;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--text-gray);
+        }
+
+        /* ===== SKILLS ===== */
+        .skills {
+            padding: 6rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .skill-icon-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-bottom: 0.8rem;
+            filter: brightness(0.9);
+        }
+
+        .skill-name {
+            font-size: 0.9rem;
+            color: var(--text-white);
+        }
+
+        /* ===== CONTACTO ===== */
+        .contact {
+            padding: 6rem 0;
+            background: var(--bg-card);
+            text-align: center;
+        }
+
+        .contact .section-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact .btn-outline {
+            display: inline-block;
+            width: auto;
+            padding: 0.8rem 2rem;
+            margin: 0 auto;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== MEDIA QUERIES (RESPONSIVE) ===== */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-dark);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid var(--border-color);
+                z-index: 1000;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu .nav-item {
+                margin: 0.5rem 0;
+            }
+            .nav-menu .nav-link {
+                display: block;
+                padding: 0.5rem;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .bio-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .founder-tree {
+                align-items: center;
+            }
+            .trunk {
+                margin-left: 0;
+            }
+            .branches {
+                margin-left: 0;
+                justify-content: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+            .hero-visual {
+                height: 300px;
+                order: -1;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .project-card {
+                margin: 0;
+            }
+            .branches {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .project-btn {
+                min-width: auto;
+                width: 100%;
+            }
         }
     </style>
-    
 </head>
-
 <body>
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">Portfolio</span>
+                <span class="logo-text">SEO Manager</span>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">Experience</a></li>
                 <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-cta">
-                
-            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
-                <!-- <span class="hero-tagline">SEO - GEO - AIO</span>-->
                 <h1 class="hero-title">
                     Hello, I'm<br>
-                    SEO Manager| 
+                    SEO Manager
                 </h1>
                 <div class="profile-section">
-                    <!-- Main Bio Text -->
                     <p class="bio-text">
-                      Dynamic SEO Manager  with over 12 years of experience driving search engine rankings. Knowledge in (GEO, AEO)  Github,  Git, Excel, SQL, Python for data analytics.
+                        Dynamic SEO Manager with over 12 years of experience driving search engine rankings. Knowledge in GEO, AEO, GitHub, Git, Excel, SQL, Python for data analytics.
                     </p>
-                  
-                    <!-- Branch Design Section -->
                     <div class="founder-tree">
-                      <span class="founder-label">Specialities</span>
-                      
-                      <div class="trunk"></div>
-                      
-                      <div class="branches">
-                        <!-- Left Branch: Spreadlink -->
-                        <div class="branch">
-                          <a href="./" target="_blank" class="project-btn">
-                            Technical <br/>SEO
-                          </a>
+                        <span class="founder-label">Specialities</span>
+                        <div class="trunk"></div>
+                        <div class="branches">
+                            <div class="branch">
+                                <a href="#" class="project-btn">Technical SEO</a>
+                            </div>
+                            <div class="branch">
+                                <a href="#" class="project-btn">Programmatic SEO</a>
+                            </div>
+                            <div class="branch">
+                                <a href="#" class="project-btn">Content SEO</a>
+                            </div>
                         </div>
-
-                        <!-- Left Branch: Spreadlink -->
-                        <div class="branch">
-                          <a href="./" target="_blank" class="project-btn">
-                            Programmatic SEO
-                          </a>
-                        </div>
-                  
-                        <!-- Right Branch: Griddraft.pro -->
-                        <div class="branch">
-                          <a href="/" target="_blank" class="project-btn">
-                            Content <br/>SEO
-                          </a>
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                </div>
                 <div class="hero-buttons">
                     <button class="btn-primary" onclick="window.location.href='#projects'">View My Work</button>
                     <button class="btn-secondary" onclick="window.location.href='#contact'">Get In Touch</button>
                 </div>
             </div>
-
             <div class="hero-visual">
                 <spline-viewer url="https://prod.spline.design/ABrQHVpts78MTmiH/scene.splinecode"></spline-viewer>
             </div>
@@ -257,80 +658,77 @@
                 <button class="category-btn" data-category="websites">AI Projects</button>                
             </div>
             <div class="projects-grid">
+                <!-- SEO Projects -->
                 <div class="project-card" data-category="applications">
                     <div class="project-image">
-                        <img class="project-icon" src="spreadlink.png" alt="App icon">
-                        
+                        <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">SEO Ranking Projects</h3>
-                        <p class="project-description">More than 105 executed projects from LATAM, USA, CANADA, EUROPE.
-                            </p>
+                        <p class="project-description">More than 105 executed projects from LATAM, USA, CANADA, EUROPE.</p>
                         <div class="project-features">
                             <ul>
-                                <li>105 SEO Projects.</li>
+                                <li>105 SEO Projects</li>
                                 <li>15 Countries</li>
                                 <li>35 Industries</li>
                                 <li>Main Languages English and Spanish</li>
-                                              
                             </ul>
                         </div>
                         <a href="https://seo-background-davidm.netlify.app/" target="_blank" class="btn-outline">View projects</a>
-                        </div>
+                    </div>
                 </div>
 
+                <!-- Code Projects -->
                 <div class="project-card" data-category="websites">
                     <div class="project-image">
-                        <img class="project-icon" src="./musicplayer.png" alt="App icon">
+                        <i class="fas fa-code"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Code Projects</h3>
-                        <p class="project-description">Code projects mainly web scrapers for 2 industries.</p>
+                        <p class="project-description">Web scrapers for 2 industries using Python.</p>
                         <div class="project-features">
                             <ul>
                                 <li>2 Projects</li>
-                                <li>Technologies Python - HTML5 - GIT - VSC - GE</li>
+                                <li>Python - HTML5 - GIT - VSC</li>
                                 <li>Country - Colombia</li>
-                                <li>Goal - Free use application to people</li>
+                                <li>Free use applications</li>
                             </ul>
                         </div>
-                        <a href="https://buscarempleoen100portales.netlify.app/" target="_blank" class="btn-outline">View first  Project.</a>
-                        <a href="https://alquilervehiculos.netlify.app/" target="_blank" class="btn-outline">View second  Project.</a>
+                        <a href="https://buscarempleoen100portales.netlify.app/" target="_blank" class="btn-outline">View first Project</a>
+                        <a href="https://alquilervehiculos.netlify.app/" target="_blank" class="btn-outline">View second Project</a>
                     </div>
                 </div>
 
+                <!-- AI Projects -->
                 <div class="project-card" data-category="Programs">
                     <div class="project-image">
-                        <img class="project-icon" src="programs.jpg" alt="App icon">
+                        <i class="fas fa-robot"></i>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">AI Projects</h3>
-                        <p class="project-description">
-                            AI Agent to learn english and assitant to daily tasks or dutties.
-                        </p>
+                        <p class="project-description">AI Agent to learn english and assistant for daily tasks.</p>
                         <div class="project-features">
                             <ul>
                                 <li>AI agent online</li>
-                                <li>Python and html5 Languages</li>
-                                <li>Supported by Generative Engine Technology</li>
-                                <li>Goal - Free use application to people</li>
+                                <li>Python and HTML5</li>
+                                <li>Supported by Generative Engine</li>
+                                <li>Free use application</li>
                             </ul>
                         </div>
                         <a href="https://mi-agente-gemini-worker.tkpq1hkj.workers.dev/" target="_blank" class="btn-outline">View Project</a>
                     </div>
                 </div>
-
-                         
             </div>
         </div>
     </section>
-    
-    
-     <section class="about" id="about">
+
+    <section class="about" id="about">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Experience</h2>
-                <p class="section-subtitle" justify>I have experience driving search engine rankings for eCommerce and service-based websites. Proven success in leading high-performing SEO teams and executing data-driven strategies to boost organic traffic, visibility, and conversions. Expert in technical and programmatic SEO, content optimization, and cross-functional collaboration to achieve business goals. Certified in Artificial Intelligence, knowledges in LLMs and bots like (GPTBot - CCBot - Claude-Web . PerplexityBot), Generative AI Tools From (AWS - Open AI - Google). Constantly staying ahead of industry trends to ensure top-tier performance across major search engines.</p>
+                <p class="section-subtitle">
+                    I have experience driving search engine rankings for eCommerce and service-based websites. Proven success in leading high-performing SEO teams and executing data-driven strategies to boost organic traffic, visibility, and conversions. Expert in technical and programmatic SEO, content optimization, and cross-functional collaboration to achieve business goals. Certified in Artificial Intelligence, knowledgeable in LLMs and bots (GPTBot, CCBot, Claude-Web, PerplexityBot). Generative AI Tools from AWS, Open AI, Google. Constantly staying ahead of industry trends to ensure top-tier performance across major search engines.
+                </p>
             </div>
         </div>
     </section>
@@ -341,60 +739,43 @@
                 <h2 class="section-title">Skills & Technologies</h2>
                 <p class="section-subtitle">Expertise across the development spectrum</p>
             </div>
-
             <div class="skills-grid">
-                <!--<div class="skill-item">
-                    <img class="skill-icon-img" src="./js.png" alt="JavaScript">
-                    <span class="skill-name">JavaScript</span>
-                </div>
                 <div class="skill-item">
-                    <img class="skill-icon-img" src="./physics.png" alt="React">
-                    <span class="skill-name">React</span>
-                </div>
-                <div class="skill-item">
-                    <img class="skill-icon-img" src="./node-js.png" alt="Node.js">
-                    <span class="skill-name">Node.js</span>
-                </div>
-                <div class="skill-item">
-                    <img class="skill-icon-img" src="./java.png" alt="Java">
-                    <span class="skill-name">Java</span>-->
-                </div>
-                <div class="skill-item">
-                    <img class="skill-icon-img" src="./mysql-database.png" alt="MySQL">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
                     <span class="skill-name">MySQL</span>
                 </div>
                 <div class="skill-item">
-                    <img class="skill-icon-img" src="./python.png" alt="Python">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
                     <span class="skill-name">Python</span>
                 </div>
                 <div class="skill-item">
-                    <img class="skill-icon-img" src="./artificial-intelligence.png" alt="AI">
+                    <img class="skill-icon-img" src="https://img.icons8.com/color/48/artificial-intelligence.png" alt="AI">
                     <span class="skill-name">AI Prompt</span>
                 </div>
                 <div class="skill-item">
-                    <img class="skill-icon-img" src="./text.png" alt="CSS">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
                     <span class="skill-name">CSS</span>
                 </div>
                 <div class="skill-item">
-                    <img class="skill-icon-img" src="./designer (1).png" alt="UI/UX">
+                    <img class="skill-icon-img" src="https://img.icons8.com/color/48/figma--v1.png" alt="UI/UX">
                     <span class="skill-name">UI/UX</span>
                 </div>
                 <div class="skill-item">
-                    <img class="skill-icon-img" src="./seo.png" alt="SEO">
+                    <img class="skill-icon-img" src="https://img.icons8.com/color/48/google-logo.png" alt="SEO">
                     <span class="skill-name">SEO</span>
                 </div>
                 <div class="skill-item">
-                    <img class="skill-icon-img" src="./publicity.png" alt="Social Media">
+                    <img class="skill-icon-img" src="https://img.icons8.com/color/48/facebook-new.png" alt="Social Media">
                     <span class="skill-name">Social Media</span>
                 </div>
-               <div class="skill-item">
-                    <img class="skill-icon-img" src="./layers.png" alt="Graphics">
+                <div class="skill-item">
+                    <img class="skill-icon-img" src="https://img.icons8.com/color/48/adobe-photoshop--v1.png" alt="Graphic Design">
                     <span class="skill-name">Graphic Design</span>
                 </div>
                 <div class="skill-item">
-                    <img class="skill-icon-img" src="./git.png" alt="Git">
+                    <img class="skill-icon-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
                     <span class="skill-name">Git</span>
-                </div>            
+                </div>
             </div>
         </div>
     </section>
@@ -404,39 +785,64 @@
             <div class="section-header">
                 <h2 class="section-title">Let's Connect</h2>
                 <p class="section-subtitle">dhms777@gmail.com</p>
-                <a href="https://www.linkedin.com/in/davidhernanm/" target="_blank"
-                                class="social-link">
-                                <span>LinkedIn</span>
-               </a>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        
-                    <div class="social-links">
-                        <div class="social-grid">
-                            
-                            
-                           
-                        </div>
-                    </div>
-                </div>
-                
+                <a href="https://www.linkedin.com/in/davidhernanm/" target="_blank" class="btn-outline">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
             </div>
         </div>
     </section>
 
-
-
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2026. All rights reserved.</p>
-            </div>
+            <p>&copy; 2026 SEO Manager. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="app.js"></script>
-</body>
+    <script>
+        // Menú hamburguesa
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
 
+        // Smooth scroll para los enlaces del menú
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+                // Cerrar menú en móvil después de hacer clic
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Resaltar sección activa en el menú (opcional)
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
